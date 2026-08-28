@@ -1,0 +1,6 @@
+{
+  "name": "TEWEDAJ - Ethiopian Micro & Small Business Platform",
+  "description": "Digital business platform connecting Ethiopian micro and small merchants, wholesalers, delivery partners, and customers with credit, inventory, and order management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
