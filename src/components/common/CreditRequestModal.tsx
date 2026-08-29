@@ -103,15 +103,12 @@ export const CreditRequestModal: React.FC<CreditRequestModalProps> = ({
       if (success) {
         // Notify wholesaler
         addNotification({
-          id: `notif-${Date.now()}`,
           userId: wholesalerId,
           targetRole: 'wholesaler',
           title: isAm ? 'አዲስ የብድር ጥያቄ' : 'New Credit Request',
           message: isAm 
             ? `${currentUser?.name} ከ${wholesalerName} የብድር ጥያቄ ላክተዋል - ${formatETB(totalAmount)}`
             : `${currentUser?.name} has sent a credit request to ${wholesalerName} - ${formatETB(totalAmount)}`,
-          date: new Date().toISOString(),
-          read: false,
           type: 'credit_request',
           actionUrl: '/wholesaler/dashboard'
         });

@@ -17,7 +17,8 @@ import {
 } from 'lucide-react';
 
 export const CreditRequestManager: React.FC = () => {
-  const { creditRequests, approveCreditRequest, rejectCreditRequest, t, language, isDark } = useApp();
+  const { creditRequests, approveCreditRequest, rejectCreditRequest, t, language, theme } = useApp();
+  const isDark = theme === 'dark';
   const [selectedRequest, setSelectedRequest] = useState<CreditRequest | null>(null);
   const [telebirrPhone, setTelebirrPhone] = useState('');
   const [rejectionReason, setRejectionReason] = useState('');
@@ -40,7 +41,6 @@ export const CreditRequestManager: React.FC = () => {
       alert(isAm ? 'የብድር ጥያቄ ተፈቅዷል! የብድር ስምምነት ተፈጥሯል።' : 'Credit request approved! Credit agreement created.');
       setSelectedRequest(null);
       setTelebirrPhone('');
-      setShowApprovalForm(false);
     } else {
       alert(isAm ? 'የብድር ጥያቄውን ማፈቅ አልተቻለም።' : 'Failed to approve credit request.');
     }
@@ -60,7 +60,6 @@ export const CreditRequestManager: React.FC = () => {
       alert(isAm ? 'የብድር ጥያቄ ተከል኷ል።' : 'Credit request rejected.');
       setSelectedRequest(null);
       setRejectionReason('');
-      setShowRejectionForm(false);
     } else {
       alert(isAm ? 'የብድር ጥያቄውን መከልን አልተቻለም።' : 'Failed to reject credit request.');
     }
