@@ -1,6 +1,7 @@
 'use client'
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 import {
   User,
   UserRole,
@@ -111,6 +112,8 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const router = useRouter();
+  const pathname = usePathname();
   const [language, setLanguageState] = useState<Language>('en');
   const [mounted, setMounted] = useState(false);
 
@@ -179,8 +182,14 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
 
   const [currentUser, setCurrentUser] = useState<User | null>(INITIAL_USERS[0]); // default to merchant
   const [currentRole, setCurrentRole] = useState<UserRole>('merchant');
-  const [currentPath, setCurrentPathState] = useState<string>('/');
   const [selectedCreditId, setSelectedCreditId] = useState<string | null>(null);
+
+  const setCurrentPath = (path: string) => {
+    router.push(path);
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+  };
 
   // Persistence State
   const [creditAgreements, setCreditAgreements] = useState<CreditAgreement[]>(INITIAL_CREDIT_AGREEMENTS);
@@ -329,28 +338,21 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     }
   }, [notifications]);
 
-  const setCurrentPath = (path: string) => {
-    setCurrentPathState(path);
-    if (typeof window !== 'undefined') {
-      window.scrollTo({ top: 0, behavior: 'auto' });
-    }
-  };
-
   const switchRole = (role: UserRole) => {
     setCurrentRole(role);
     if (role === 'public') {
       setCurrentUser(null);
-      setCurrentPath('/');
+      router.push('/');
       return;
     }
 
     const matchedUser = INITIAL_USERS.find(u => u.role === role || (role === 'delivery' && u.role === 'delivery_partner')) || INITIAL_USERS[0];
     setCurrentUser(matchedUser);
 
-    if (role === 'merchant') setCurrentPath('/merchant/dashboard');
-    else if (role === 'wholesaler') setCurrentPath('/wholesaler/dashboard');
-    else if (role === 'delivery' || role === 'delivery_partner') setCurrentPath('/delivery/dashboard');
-    else if (role === 'customer') setCurrentPath('/customer/dashboard');
+    if (role === 'merchant') router.push('/merchant/dashboard');
+    else if (role === 'wholesaler') router.push('/wholesaler/dashboard');
+    else if (role === 'delivery' || role === 'delivery_partner') router.push('/delivery/dashboard');
+    else if (role === 'customer') router.push('/customer/dashboard');
   };
 
   const switchUserRole = (role: UserRole) => switchRole(role);
@@ -365,10 +367,10 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     setCurrentUser(userToSet);
     setCurrentRole(role);
 
-    if (role === 'merchant') setCurrentPath('/merchant/dashboard');
-    else if (role === 'wholesaler') setCurrentPath('/wholesaler/dashboard');
-    else if (role === 'delivery' || role === 'delivery_partner') setCurrentPath('/delivery/dashboard');
-    else if (role === 'customer') setCurrentPath('/customer/dashboard');
+    if (role === 'merchant') router.push('/merchant/dashboard');
+    else if (role === 'wholesaler') router.push('/wholesaler/dashboard');
+    else if (role === 'delivery' || role === 'delivery_partner') router.push('/delivery/dashboard');
+    else if (role === 'customer') router.push('/customer/dashboard');
   };
 
   const login = (role: UserRole, emailOrPhone: string) => {
@@ -408,15 +410,15 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const logoutUser = () => {
     setCurrentUser(null);
     setCurrentRole('public');
-    setCurrentPath('/');
+    router.push('/');
   };
 
   const selectCreditForDetail = (creditId: string) => {
     setSelectedCreditId(creditId);
     if (currentRole === 'customer') {
-      setCurrentPath('/customer/dashboard');
+      router.push('/customer/dashboard');
     } else {
-      setCurrentPath('/merchant/credit-hub');
+      router.push('/merchant/credit-hub');
     }
   };
 
@@ -1003,7 +1005,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         t,
         currentUser,
         currentRole,
-        currentPath,
+        currentPath: pathname,
         selectedCreditId,
         setCurrentPath,
         switchRole,

@@ -1,3 +1,5 @@
+'use client'
+
 import { ForWholesalersPage } from '../../components/public/ForWholesalersPage'
 
 export default function ForWholesalers() {

@@ -1,3 +1,5 @@
+'use client'
+
 import { AboutPage } from '../../components/public/AboutPage'
 
 export default function About() {
