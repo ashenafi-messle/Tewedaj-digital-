@@ -1,7 +1,12 @@
 'use client'
 
+import { DashboardLayout } from '../../../components/dashboard/DashboardLayout'
 import { MerchantInventory } from '../../../components/merchant/MerchantInventory'
 
 export default function MerchantInventoryPage() {
-  return <MerchantInventory />
+  return (
+    <DashboardLayout>
+      <MerchantInventory />
+    </DashboardLayout>
+  )
 }

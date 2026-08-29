@@ -1,7 +1,12 @@
 'use client'
 
+import { DashboardLayout } from '../../../components/dashboard/DashboardLayout'
 import { DeliveryActive } from '../../../components/delivery/DeliveryActive'
 
 export default function DeliveryActivePage() {
-  return <DeliveryActive />
+  return (
+    <DashboardLayout>
+      <DeliveryActive />
+    </DashboardLayout>
+  )
 }
