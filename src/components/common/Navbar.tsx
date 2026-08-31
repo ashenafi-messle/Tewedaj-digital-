@@ -44,10 +44,10 @@ export const Navbar: React.FC = () => {
         justifyContent: 'space-between'
       }}>
         {/* Logo */}
-        <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer', textDecoration: 'none' }}>
+        <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer', textDecoration: 'none', flexShrink: 0 }}>
           <div style={{
-            width: '38px',
-            height: '38px',
+            width: '42px',
+            height: '42px',
             borderRadius: '10px',
             background: isDark ? 'linear-gradient(135deg, #FFAA2C 0%, #D97808 100%)' : 'linear-gradient(135deg, #F4C542 0%, #D99A20 100%)',
             display: 'flex',
@@ -59,7 +59,7 @@ export const Navbar: React.FC = () => {
             <span style={{
               fontFamily: 'Fraunces, serif',
               fontWeight: 800,
-              fontSize: '1.25rem',
+              fontSize: '1.35rem',
               color: isDark ? '#160D06' : '#38210F',
               lineHeight: 1
             }}>
@@ -69,7 +69,7 @@ export const Navbar: React.FC = () => {
           <div>
             <div style={{
               fontFamily: 'Fraunces, serif',
-              fontSize: '1.4rem',
+              fontSize: '1.5rem',
               fontWeight: 800,
               color: isDark ? '#FFF4E5' : '#4A2E17',
               letterSpacing: '0.5px',
@@ -78,7 +78,7 @@ export const Navbar: React.FC = () => {
               TEWEDAJ
             </div>
             <div style={{
-              fontSize: '0.65rem',
+              fontSize: '0.7rem',
               fontWeight: 600,
               color: isDark ? '#FFB94D' : '#4F7D3A',
               letterSpacing: '1px',
@@ -123,23 +123,23 @@ export const Navbar: React.FC = () => {
         </nav>
 
         {/* Right CTA */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }} className="desktop-cta">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }} className="desktop-cta">
           <ThemeToggle compact />
           <LanguageToggle compact />
           <Link
             href="/login"
             className="btn btn-outline btn-sm"
-            style={{ textDecoration: 'none' }}
+            style={{ textDecoration: 'none', fontSize: '1rem', padding: '10px 20px' }}
           >
             Login
           </Link>
           <Link
             href="/signup"
             className="btn btn-gold btn-sm"
-            style={{ textDecoration: 'none' }}
+            style={{ textDecoration: 'none', fontSize: '1rem', padding: '10px 20px' }}
           >
             Get Started
-            <ArrowRight size={14} />
+            <ArrowRight size={16} />
           </Link>
         </div>
 
@@ -227,6 +227,17 @@ export const Navbar: React.FC = () => {
           .mobile-language-toggle {
             display: inline-flex !important;
           }
+        }
+
+        /* Force navbar elements to not contract on desktop */
+        .desktop-cta .btn-sm {
+          font-size: 1rem !important;
+          padding: 10px 20px !important;
+          white-space: nowrap !important;
+        }
+
+        .public-navbar {
+          min-height: 72px;
         }
       `}</style>
     </header>

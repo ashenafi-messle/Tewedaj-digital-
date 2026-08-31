@@ -30,19 +30,20 @@ export const LanguageToggle: React.FC<LanguageToggleProps> = ({ compact = false,
           display: 'flex',
           alignItems: 'center',
           gap: '4px',
-          padding: compact ? '4px 8px' : '5px 10px',
+          padding: compact ? '6px 10px' : '6px 12px',
           borderRadius: '16px',
           border: 'none',
           cursor: 'pointer',
-          fontSize: compact ? '0.74rem' : '0.78rem',
+          fontSize: compact ? '0.8rem' : '0.85rem',
           fontWeight: language === 'en' ? 800 : 500,
           backgroundColor: language === 'en' ? '#38210F' : 'transparent',
           color: language === 'en' ? '#F4C542' : (variant === 'dark' ? '#FAF5E8' : '#5A4634'),
-          transition: 'all 0.2s ease'
+          transition: 'all 0.2s ease',
+          whiteSpace: 'nowrap'
         }}
         title="English"
       >
-        <span style={{ fontSize: '0.85rem' }}>🇬🇧</span>
+        <span style={{ fontSize: '0.9rem' }}>🇬🇧</span>
         <span>EN</span>
       </button>
 
@@ -53,19 +54,20 @@ export const LanguageToggle: React.FC<LanguageToggleProps> = ({ compact = false,
           display: 'flex',
           alignItems: 'center',
           gap: '4px',
-          padding: compact ? '4px 8px' : '5px 10px',
+          padding: compact ? '6px 10px' : '6px 12px',
           borderRadius: '16px',
           border: 'none',
           cursor: 'pointer',
-          fontSize: compact ? '0.74rem' : '0.78rem',
+          fontSize: compact ? '0.8rem' : '0.85rem',
           fontWeight: language === 'am' ? 800 : 500,
           backgroundColor: language === 'am' ? '#38210F' : 'transparent',
           color: language === 'am' ? '#F4C542' : (variant === 'dark' ? '#FAF5E8' : '#5A4634'),
-          transition: 'all 0.2s ease'
+          transition: 'all 0.2s ease',
+          whiteSpace: 'nowrap'
         }}
         title="አማርኛ (Amharic)"
       >
-        <span style={{ fontSize: '0.85rem' }}>🇪🇹</span>
+        <span style={{ fontSize: '0.9rem' }}>🇪🇹</span>
         <span>አማርኛ</span>
       </button>
     </div>
