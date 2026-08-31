@@ -18,10 +18,6 @@ export const Navbar: React.FC = () => {
   const navLinks = [
     { label: 'Home', path: '/' },
     { label: 'How It Works', path: '/how-it-works' },
-    { label: 'For Merchants', path: '/for-merchants' },
-    { label: 'For Wholesalers', path: '/for-wholesalers' },
-    { label: 'For Delivery', path: '/for-delivery' },
-    { label: 'For Customers', path: '/for-customers' },
     { label: 'About', path: '/about' },
   ];
 
@@ -93,13 +89,13 @@ export const Navbar: React.FC = () => {
 
         {/* Desktop Nav */}
         <nav style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
+          display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          gap: '10px',
+          gap: '12px',
+          flexWrap: 'wrap',
           width: '100%',
-          maxWidth: '700px',
+          maxWidth: '420px',
           whiteSpace: 'nowrap'
         }} className="desktop-nav">
           {navLinks.map((link) => {
