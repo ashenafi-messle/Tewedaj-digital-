@@ -123,10 +123,10 @@ export const ReceiptScannerModal: React.FC<ReceiptScannerModalProps> = ({ isOpen
 
                 <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap' }}>
                   <button
-                    onClick={() => simulateOCRScan('merkato')}
+                    onClick={() => simulateOCRScan('supplier')}
                     className="btn btn-gold btn-sm"
                   >
-                    <FileText size={14} /> Scan Merkato Spice & Oil Receipt
+                    <FileText size={14} /> Scan Supplier Spice & Oil Receipt
                   </button>
                   <button
                     onClick={() => simulateOCRScan('flour')}

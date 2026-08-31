@@ -62,7 +62,7 @@ export const RoleSidebar: React.FC = () => {
 
   const roleTitleMap: Record<string, { name: string; tag: string; color: string; bg: string }> = {
     merchant: { name: 'Almaz Wolde', tag: 'Merchant Portal', color: '#4A2E17', bg: '#FBE6A2' },
-    wholesaler: { name: 'Merkato Central', tag: 'Wholesaler Hub', color: '#38210F', bg: '#EFEBE9' },
+    wholesaler: { name: 'Gondar Central', tag: 'Wholesaler Hub', color: '#38210F', bg: '#EFEBE9' },
     delivery_partner: { name: 'Dawit Mengistu', tag: 'Delivery Rider', color: '#375928', bg: '#DCE8C8' },
     customer: { name: 'Bethlehem Tsegaye', tag: 'Customer Account', color: '#00695C', bg: '#E0F2F1' },
   };
@@ -188,7 +188,7 @@ export const RoleSidebar: React.FC = () => {
               {roleInfo.name}
             </div>
             <div style={{ fontSize: '0.72rem', color: '#756B5D', display: 'flex', alignItems: 'center', gap: '3px' }}>
-              <MapPin size={11} /> Addis Ababa, ET
+              <MapPin size={11} /> Gondar, ET
             </div>
           </div>
         </div>

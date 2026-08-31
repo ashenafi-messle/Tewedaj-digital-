@@ -226,7 +226,7 @@ export const TRANSLATIONS: Record<string, Record<Language, string>> = {
     am: 'ቀጥታ የጅምላ ዕቃ ግዢ'
   },
   'pillar2.desc': {
-    en: 'Cut out Merkato middlemen. Order top-grade Adaa Magna Teff, cooking oil, spices, and roasted coffee sacks at guaranteed wholesale transparent pricing.',
+    en: 'Cut out middlemen. Order top-grade Adaa Magna Teff, cooking oil, spices, and roasted coffee sacks at guaranteed wholesale transparent pricing.',
     am: 'የመርካቶ ደላሎችን አስቀርተው የመጀመሪያ ደረጃ የአዳ ጤፍ፣ ዘይት፣ ቅመማ ቅመም እና ቡና በጅምላ ዋጋ ይዘዙ።'
   },
   'pillar3.title': {
@@ -486,7 +486,7 @@ export const TRANSLATIONS: Record<string, Record<Language, string>> = {
     am: 'የቀጥታ የእርሻና የምግብ ጅምላ ግዢ ማዕከል'
   },
   'market.subtitle': {
-    en: 'Order directly from verified Addis Ababa & regional suppliers with verified bulk prices.',
+    en: 'Order directly from verified Gondar & regional suppliers with verified bulk prices.',
     am: 'ከአዲስ አበባና ክልል አቅራቢዎች በቀጥታ በጅምላ ዋጋ ይዘዙ።'
   },
   'market.moq': {
@@ -680,7 +680,7 @@ export const TRANSLATIONS: Record<string, Record<Language, string>> = {
 
   // Footer & FAQ
   'footer.about': {
-    en: 'TEWEDAJ (ተወዳጅ) is Ethiopia’s premier B2B and micro-credit commerce infrastructure, powering MSMEs across Addis Ababa, Hawassa, Adama, Bahir Dar, and beyond.',
+    en: 'TEWEDAJ (ተወዳጅ) is Ethiopia’s premier B2B and micro-credit commerce infrastructure, powering MSMEs across Gondar, Hawassa, Adama, Bahir Dar, and beyond.',
     am: 'ተወዳጅ በአዲስ አበባ፣ ሀዋሳ፣ አዳማ፣ ባህር ዳር እና በመላው ኢትዮጵያ የሚገኙ አነስተኛ ንግዶችን የሚያጠናክር የዲጂታል ብድር እና የጅምላ አቅርቦት መድረክ ነው።'
   },
   'footer.rights': {
@@ -854,7 +854,7 @@ export const TRANSLATIONS: Record<string, Record<Language, string>> = {
     am: 'የገቢ የጅምላ ትዕዛዛትና ጭነቶች'
   },
   'merchantOrders.subtitle': {
-    en: 'Track direct cargo shipments from Merkato suppliers with live OTP handover protection.',
+    en: 'Track direct cargo shipments from verified suppliers with live OTP handover protection.',
     am: 'ከመርካቶ አቅራቢዎች የሚመጡ ቀጥታ ጭነቶችን በቀጥታ OTP ማስረከቢያ ይከታተሉ።'
   },
   'merchantOrders.orderStock': {
@@ -994,7 +994,7 @@ export const TRANSLATIONS: Record<string, Record<Language, string>> = {
     am: 'የመጀመሪያ ደረጃ ስርጭት'
   },
   'wholesalerDashboard.location': {
-    en: 'Direct bulk supply to retail merchants across Addis Ababa',
+    en: 'Direct bulk supply to retail merchants across Gondar',
     am: 'ቀጥታ የጅምላ አቅርቦት ለአዲስ አበባ የሽያጭ አስተዳደሮች'
   },
   'wholesalerDashboard.addProduct': {
@@ -1126,7 +1126,7 @@ export const TRANSLATIONS: Record<string, Record<Language, string>> = {
     am: 'የሽያጭ ገበቻ ፍለጋ እና የጅምላ አዝናኝሮች'
   },
   'wholesalerAnalytics.subtitle': {
-    en: 'Real-time procurement heatmaps across Addis Ababa retail trade corridors.',
+    en: 'Real-time procurement heatmaps across Gondar retail trade corridors.',
     am: 'በአዲስ አበባ የሽያጭ የንግድ መንገዶች የቀጥታ የግዢ ካርታዎች።'
   },
   'wholesalerAnalytics.subcityOutflow': {
@@ -1356,7 +1356,7 @@ export const TRANSLATIONS: Record<string, Record<Language, string>> = {
     am: 'በአቅርብ ያሉ የማስረያዎች'
   },
   'deliveryDashboard.tradeCorridor': {
-    en: 'Bole & Merkato Trade Corridor',
+    en: 'Bole & Gondar Trade Corridor',
     am: 'የቦሌ እና መርካቶ የንግድ ኮሪዶር'
   },
   'deliveryDashboard.tripPayoutLabel': {
@@ -1374,7 +1374,7 @@ export const TRANSLATIONS: Record<string, Record<Language, string>> = {
     am: 'የጅምላ ስራዎች ገበቻ'
   },
   'deliveryJobs.subtitle': {
-    en: 'Browse and accept nearby wholesale shipments ready for pickup in Merkato and Kality warehouses.',
+    en: 'Browse and accept nearby wholesale shipments ready for pickup in Gondar and Kality warehouses.',
     am: 'በመርካቶ እና ቃሊቲ መጋዘኖች ለመያዝ ዝግጁ የጅምላ ማስረያዎችን ያስሱ እና ይቀበሉ።'
   },
   'deliveryJobs.kmTrip': {

@@ -53,7 +53,7 @@ export const ForMerchantsPage: React.FC = () => {
             <p style={{ color: isDark ? '#E2D2C1' : 'var(--text-muted)', fontSize: '0.9rem', lineHeight: 1.6 }}>
               {isAm 
                 ? 'ከሱቅዎ መደርደሪያ ሳይወጡ የአዳ ማኛ ጤፍ፣ ዘይት፣ ዱቄት እና ቅመማ ቅመሞችን ከመስሪያ ሰሌዳዎ በቀጥታ በጅምላ ዋጋ ይዘዙ።'
-                : 'Order teff, cooking oil, wheat flour, and spices from certified Merkato distributors without leaving your checkout counter.'}
+                : 'Order teff, cooking oil, wheat flour, and spices from certified distributors without leaving your checkout counter.'}
             </p>
           </div>
 

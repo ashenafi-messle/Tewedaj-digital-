@@ -35,7 +35,7 @@ export const MerchantInventory: React.FC = () => {
   const [newItemUnit, setNewItemUnit] = useState('Quintals (100kg)');
   const [newItemBuyPrice, setNewItemBuyPrice] = useState(4000);
   const [newItemSellPrice, setNewItemSellPrice] = useState(4800);
-  const [newItemSupplier, setNewItemSupplier] = useState('Merkato Direct Trader');
+  const [newItemSupplier, setNewItemSupplier] = useState('Direct Trader');
 
   const categories = ['All', 'Grains & Cereals', 'Cooking Oils', 'Spices & Condiments', 'Flour & Grain Mill', 'Hot Beverages'];
 
@@ -221,7 +221,7 @@ export const MerchantInventory: React.FC = () => {
                 const marginPercent = sellPrice > 0 ? Math.round((margin / sellPrice) * 100) : 0;
                 const lineValuation = (Number(item.quantity) || 0) * sellPrice;
                 const displayName = item.name || item.productName || 'Unnamed Product';
-                const displaySupplier = item.supplier || 'Merkato Direct Trader';
+                const displaySupplier = item.supplier || 'Direct Trader';
 
                 return (
                   <tr key={item.id}>

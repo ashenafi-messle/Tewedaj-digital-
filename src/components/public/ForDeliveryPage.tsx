@@ -39,8 +39,8 @@ export const ForDeliveryPage: React.FC = () => {
             </h3>
             <p style={{ color: isDark ? '#E2D2C1' : 'var(--text-muted)', fontSize: '0.9rem', lineHeight: 1.6 }}>
               {isAm 
-                ? 'ስራዎች የሚመደቡት ለመርካቶ፣ ቃሊቲ ወይም ለአካባቢዎ መጋዘኖች ባሉዎት ቅርበት መሰረት ነው።'
-                : 'Jobs are assigned based on your current sub-city proximity to Merkato, Kality, or local warehouse clusters.'}
+                ? 'ስራዎች የሚመደቡት ለጎንደር፣ ቃሊቲ ወይም ለአካባቢዎ መጋዘኖች ባሉዎት ቅርበት መሰረት ነው።'
+                : 'Jobs are assigned based on your current sub-city proximity to Gondar, Kality, or local warehouse clusters.'}
             </p>
           </div>
 
@@ -82,7 +82,7 @@ export const ForDeliveryPage: React.FC = () => {
           <p style={{ color: isDark ? '#E2D2C1' : 'var(--text-muted)', marginBottom: '24px' }}>
             {isAm 
               ? 'በአዲስ አበባ የታመነውን የካርጎና የባጃጅ ትራንስፖርት አውታረ መረብ ይቀላቀሉ።'
-              : 'Join the trusted freight and last-mile logistics partner network in Addis Ababa.'}
+              : 'Join the trusted freight and last-mile logistics partner network in Gondar.'}
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '14px', flexWrap: 'wrap' }}>
             <button onClick={() => switchRole('delivery_partner')} className="btn btn-green btn-lg">

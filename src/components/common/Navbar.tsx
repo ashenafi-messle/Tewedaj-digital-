@@ -84,7 +84,7 @@ export const Navbar: React.FC = () => {
               textTransform: 'uppercase',
               marginTop: '1px'
             }}>
-              ተወዳጅ • Digital Commerce
+              ተወዳጅ • Digital solution
             </div>
           </div>
         </Link>

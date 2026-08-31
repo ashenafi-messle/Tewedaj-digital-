@@ -51,7 +51,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ initialMode = 'login' }) => 
   const [password, setPassword] = useState('password123');
   const [name, setName] = useState(isAm ? 'አልማዝ ወልዴ' : 'Almaz Wolde');
   const [businessName, setBusinessName] = useState(isAm ? 'የአልማዝ ቤተሰብ የሰፈር ሱቅ' : 'Almaz Family Grocery & Kiosk');
-  const [location, setLocation] = useState(isAm ? 'ቦሌ ክፍለ ከተማ፣ አዲስ አበባ' : 'Bole Sub-City, Addis Ababa');
+  const [location, setLocation] = useState(isAm ? 'ቦሌ ክፍለ ከተማ፣ ጎንደር' : 'Bole Sub-City, Gondar');
   const [vehicleType, setVehicleType] = useState('TVS King Bajaj Cargo');
 
   // Reset Password Flow State
@@ -76,7 +76,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ initialMode = 'login' }) => 
       setEmail(demoUser.email);
       setName(demoUser.name);
       setBusinessName(demoUser.businessName || '');
-      setLocation(demoUser.location || (isAm ? 'አዲስ አበባ' : 'Addis Ababa'));
+      setLocation(demoUser.location || (isAm ? 'ጎንደር' : 'Gondar'));
       if (demoUser.vehicleType) setVehicleType(demoUser.vehicleType);
     }
   };
@@ -756,7 +756,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ initialMode = 'login' }) => 
                       className="form-input"
                       value={location}
                       onChange={(e) => setLocation(e.target.value)}
-                      placeholder={isAm ? 'ለምሳሌ: ቦሌ ክፍለ ከተማ፣ አዲስ አበባ' : 'e.g. Bole Sub-City, Addis Ababa'}
+                      placeholder={isAm ? 'ለምሳሌ: ቦሌ ክፍለ ከተማ፣ ጎንደር' : 'e.g. Bole Sub-City, Gondar'}
                     />
                   </div>
                 </>

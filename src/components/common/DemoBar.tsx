@@ -95,7 +95,7 @@ export const DemoBar: React.FC = () => {
           }}
         >
           <ShoppingBag size={13} />
-          Wholesaler (Merkato)
+          Wholesaler Hub
         </button>
 
         <button

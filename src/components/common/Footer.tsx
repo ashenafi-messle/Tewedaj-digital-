@@ -56,7 +56,7 @@ export const Footer: React.FC = () => {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.85rem', color: '#BAA682' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <MapPin size={15} color="#F4C542" />
-                <span>{isAm ? 'አዲስ አበባ፣ ቦሌ እና መርካቶ የንግድ ማዕከላት፣ ኢትዮጵያ' : 'Addis Ababa, Bole & Merkato Commerce Hubs, Ethiopia'}</span>
+                <span>{isAm ? 'ጎንደር፣ የንግድ ማዕከላቶች፣ ኢትዮጵያ' : 'Gondar, Commerce Hubs, Ethiopia'}</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <Phone size={15} color="#F4C542" />
@@ -190,7 +190,7 @@ export const Footer: React.FC = () => {
           color: '#BAA682'
         }}>
           <div>
-            {isAm ? '© 2026 ተወዳጅ የኢትዮጵያ ኢንተርፕራይዝ። መብቱ በህግ የተጠበቀ ነው። አዲስ አበባ፣ ኢትዮጵያ።' : '© 2026 TEWEDAJ Platform. All rights reserved. Addis Ababa, Ethiopia.'}
+            {isAm ? '© 2026 ተወዳጅ የኢትዮጵያ ኢንተርፕራይዝ። መብቱ በህግ የተጠበቀ ነው። ጎንደር፣ ኢትዮጵያ።' : '© 2026 TEWEDAJ Platform. All rights reserved. Gondar, Ethiopia.'}
           </div>
           <div style={{ display: 'flex', gap: '16px' }}>
             <button onClick={() => setCurrentPath('/about')} style={{ background: 'none', border: 'none', color: '#BAA682', cursor: 'pointer' }}>{isAm ? 'የግላዊነት ፖሊሲ' : 'Privacy Policy'}</button>

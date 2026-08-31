@@ -66,8 +66,8 @@ export const AboutPage: React.FC = () => {
             </h3>
             <p style={{ color: isDark ? '#E2D2C1' : 'var(--text-muted)', fontSize: '0.9rem', lineHeight: 1.6 }}>
               {isAm 
-                ? 'የሰፈር ሱቅ ነጋዴዎች ወደ መርካቶ ዕቃ ለመግዛት በቀን እስከ 4 ሰዓት ያባክናሉ። ተወዳጅ ቀጥታ የጅምላ ካታሎግ እና የባጃጅ አቅርቦትን እስከ ሱቅ በር ያመጣል።'
-                : 'Small shopkeepers waste up to 4 hours daily traveling to wholesale markets like Merkato. TEWEDAJ brings direct catalog ordering and Bajaj delivery directly to their counters.'}
+                ? 'የሰፈር ሱቅ ነጋዴዎች ወደ የጅምላ ገበያ እቃ ለመግዛት በቀን እስከ 4 ሰዓት ያባክናሉ። ተወዳጅ ቀጥታ የጅምላ ካታሎግ እና የባጃጅ አቅርቦትን እስከ ሱቅ በር ያመጣል።'
+                : 'Small shopkeepers waste up to 4 hours daily traveling to wholesale markets. TEWEDAJ brings direct catalog ordering and Bajaj delivery directly to their counters.'}
             </p>
           </div>
 

@@ -60,7 +60,7 @@ export const ContactPage: React.FC = () => {
                 <div>
                   <strong style={{ color: 'var(--brown-dark)' }}>{isAm ? 'ዋና መሥሪያ ቤት' : 'Headquarters'}</strong>
                   <p style={{ margin: '2px 0 0', color: 'var(--text-muted)' }}>
-                    {isAm ? 'ቦሌ ክፍለ ከተማ፣ ወረዳ 03፣ አዲስ አበባ፣ ኢትዮጵያ' : 'Bole Sub-City, Woreda 03, Addis Ababa, Ethiopia'}
+                    {isAm ? 'ቦሌ ክፍለ ከተማ፣ ወረዳ 03፣ ጎንደር፣ ኢትዮጵያ' : 'Bole Sub-City, Woreda 03, Gondar, Ethiopia'}
                   </p>
                 </div>
               </div>
@@ -114,8 +114,8 @@ export const ContactPage: React.FC = () => {
                 </h3>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '20px' }}>
                   {isAm 
-                    ? 'የአዲስ አበባ የድጋፍ ቡድናችን በ2 ሰዓት ውስጥ በስልክ ወይም በኤስኤምኤስ ያገኝዎታል።' 
-                    : 'Our Addis Ababa merchant support team will call or message you within 2 hours.'}
+                    ? 'የጎንደር የድጋፍ ቡድናችን በ2 ሰዓት ውስጥ በስልክ ወይም በኤስኤምኤስ ያገኝዎታል።' 
+                    : 'Our Gondar merchant support team will call or message you within 2 hours.'}
                 </p>
                 <button onClick={() => setSubmitted(false)} className="btn btn-outline btn-sm">
                   {isAm ? 'ሌላ መልዕክት ላክ' : 'Send Another Message'}

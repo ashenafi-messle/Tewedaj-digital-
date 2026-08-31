@@ -26,7 +26,7 @@ export const HowItWorksPage: React.FC = () => {
       title: isAm ? 'የቀጥታ የጅምላ ካታሎግ ማሰስ' : 'Wholesale Catalog Discovery',
       desc: isAm 
         ? 'የአዳ ማኛ ጤፍ፣ የፉርኖ ዱቄት፣ የሱፍ የምግብ ዘይት እና የቅመማ ቅመም የጅምላ መጋዘን ዋጋዎችን ከመስሪያ ሰሌዳዎ በቀጥታ ይመልከቱ።'
-        : 'Browse current market prices for quintals of Magna Teff, wheat flour, sunflower cooking oils, and spices from verified Merkato distributors.',
+        : 'Browse current market prices for quintals of Magna Teff, wheat flour, sunflower cooking oils, and spices from verified distributors.',
       role: isAm ? 'ነጋዴ እና ጅምላ አቅራቢ' : 'Merchant & Wholesaler',
       icon: ShoppingBag,
       badgeColor: '#4F7D3A'

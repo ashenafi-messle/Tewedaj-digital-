@@ -56,7 +56,7 @@ export const LandingPage: React.FC = () => {
       id: 1,
       title: language === 'am' ? 'የሰፈር ሸቀጣ ሸቀጥ ሱቅ' : 'Small Grocery & Sundries',
       type: language === 'am' ? 'የሰፈር ችርቻሮ እና የፍጆታ ዕቃዎች' : 'Neighborhood Retail & FMCG',
-      location: language === 'am' ? 'ቦሌ ቡልቡላ፣ አዲስ አበባ' : 'Bole Bulbula, Addis Ababa',
+      location: language === 'am' ? 'ቦሌ ቡልቡላ፣ ጎንደር' : 'Bole Bulbula, Gondar',
       roleKey: 'merchant' as const,
       image: imgGroceryMerchant,
       icon: Store,
@@ -69,7 +69,7 @@ export const LandingPage: React.FC = () => {
       id: 2,
       title: language === 'am' ? 'ባህላዊ ካፌና የቡና መቁያ' : 'Traditional Café & Roastery',
       type: language === 'am' ? 'መስተንግዶና የቡና አቅርቦት' : 'Hospitality & Bean Supply',
-      location: language === 'am' ? 'ካዛንቺስ፣ አዲስ አበባ' : 'Kazanchis, Addis Ababa',
+      location: language === 'am' ? 'ካዛንቺስ፣ ጎንደር' : 'Kazanchis, Gondar',
       roleKey: 'merchant' as const,
       image: imgCafeOwner,
       icon: Coffee,
@@ -82,7 +82,7 @@ export const LandingPage: React.FC = () => {
       id: 3,
       title: language === 'am' ? 'የአትክልትና ፍራፍሬ መደብር' : 'Fresh Produce & Vegetable Stall',
       type: language === 'am' ? 'ትኩስ የግብርና ምርቶች' : 'Fresh Agricultural Market',
-      location: language === 'am' ? 'ፒያሳ፣ አዲስ አበባ' : 'Piazza Central, Addis Ababa',
+      location: language === 'am' ? 'ፒያሳ፣ ጎንደር' : 'Piazza Central, Gondar',
       roleKey: 'merchant' as const,
       image: imgProduceMarket,
       icon: Apple,
@@ -95,7 +95,7 @@ export const LandingPage: React.FC = () => {
       id: 4,
       title: language === 'am' ? 'የውበትና የንጽህና መጠበቂያ ቡቲክ' : 'Beauty & Personal Care Boutique',
       type: language === 'am' ? 'ኮስሞቲክስና የውበት ዕቃዎች' : 'Cosmetics & Personal Care',
-      location: language === 'am' ? 'ሜክሲኮ፣ አዲስ አበባ' : 'Mexico Square, Addis Ababa',
+      location: language === 'am' ? 'ሜክሲኮ፣ ጎንደር' : 'Mexico Square, Gondar',
       roleKey: 'merchant' as const,
       image: imgBeautyCosmetics,
       icon: Sparkle,
@@ -108,7 +108,7 @@ export const LandingPage: React.FC = () => {
       id: 5,
       title: language === 'am' ? 'የአልባሳትና ባህላዊ ጨርቃጨርቅ ሱቅ' : 'Apparel & Traditional Textiles',
       type: language === 'am' ? 'ፋሽንና ጨርቃጨርቅ ችርቻሮ' : 'Fashion & Fabric Retail',
-      location: language === 'am' ? 'መርካቶ፣ አዲስ አበባ' : 'Merkato Trade Center, Addis Ababa',
+      location: language === 'am' ? 'ገበያ ማዕከል፣ ጎንደር' : 'Market Trade Center, Gondar',
       roleKey: 'merchant' as const,
       image: imgClothingRetail,
       icon: Shirt,
@@ -121,7 +121,7 @@ export const LandingPage: React.FC = () => {
       id: 6,
       title: language === 'am' ? 'የሰፈር ጭነት አጓጓዥ' : 'Doorstep Cargo Courier',
       type: language === 'am' ? 'ከጅምላ ወደ ሱቅ ማጓጓዝ' : 'Wholesale-to-Shop Logistics',
-      location: language === 'am' ? 'አዲስ አበባ' : 'Addis Ababa Trade Corridors',
+      location: language === 'am' ? 'ጎንደር' : 'Gondar Trade Corridors',
       roleKey: 'delivery_partner' as const,
       image: imgDeliveryHandover,
       icon: PackageCheck,
@@ -341,7 +341,7 @@ export const LandingPage: React.FC = () => {
               <span>•</span>
               <div>{language === 'am' ? '100% ግልጽ የብድር መዝገብ' : '100% Transparent Ledger'}</div>
               <span>•</span>
-              <div>{language === 'am' ? 'ቀጥታ የመርካቶ አቅርቦት' : 'Merkato Direct Supply'}</div>
+              <div>{language === 'am' ? 'ቀጥታ አቅርቦት' : 'Direct Supply'}</div>
             </div>
           </div>
 
@@ -638,7 +638,7 @@ export const LandingPage: React.FC = () => {
               <p style={{ color: '#756B5D', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '20px', flex: 1 }}>
                 {language === 'am'
                   ? 'ምርቶችንና ጥሬ ዕቃዎችን በቀጥታ ከመጋዘን፣ ከአርሶ አደሮች እና ከተረጋገጡ ፋብሪካዎች ያግኙ።'
-                  : 'Find products and raw materials directly from Merkato wholesalers, regional farmers, and certified manufacturers.'}
+                  : 'Find products and raw materials directly from trusted wholesalers, regional farmers, and certified manufacturers.'}
               </p>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#3D2817', fontWeight: 800, fontSize: '0.88rem' }}>
                 {language === 'am' ? 'የጅምላ ገበያ ይመልከቱ' : 'Browse Wholesale'} <ChevronRight size={16} />
@@ -1812,7 +1812,7 @@ export const LandingPage: React.FC = () => {
                   fontSize: '0.72rem',
                   fontWeight: 700
                 }}>
-                  {language === 'am' ? 'አዲስ አበባ' : 'Addis Ababa'}
+                  {language === 'am' ? 'ጎንደር' : 'Gondar'}
                 </span>
                 <span style={{
                   backgroundColor: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 0.1)',

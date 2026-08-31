@@ -72,7 +72,7 @@ export const MerchantMarketplace: React.FC = () => {
         <div style={{ maxWidth: '640px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
             <span className="badge badge-active" style={{ fontSize: '0.72rem' }}>
-              DIRECT FROM MERKATO & COOPERATIVES
+              DIRECT FROM VERIFIED SUPPLIERS
             </span>
           </div>
           <h1 style={{ fontFamily: 'Fraunces, serif', fontSize: '1.8rem', color: '#F4C542', margin: '0 0 8px' }}>

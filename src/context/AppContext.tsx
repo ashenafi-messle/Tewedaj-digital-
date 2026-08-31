@@ -567,8 +567,8 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     const otpCode = String(Math.floor(1000 + Math.random() * 9000));
 
     const supplierId = cart[0].product.supplierId || cart[0].product.wholesalerId || 'usr-wholesaler-1';
-    const supplierName = cart[0].product.supplierName || cart[0].product.wholesalerName || 'Merkato Central Agro Wholesalers';
-    const supplierLocation = cart[0].product.supplierLocation || cart[0].product.wholesalerLocation || 'Merkato Military Tera, Addis Ababa';
+    const supplierName = cart[0].product.supplierName || cart[0].product.wholesalerName || 'Gondar Central Agro Wholesalers';
+    const supplierLocation = cart[0].product.supplierLocation || cart[0].product.wholesalerLocation || 'Central Market, Gondar';
 
     const newOrder: Order = {
       id: `ord-${Date.now()}`,
@@ -738,10 +738,10 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
       moq: productData.moq || productData.minOrderQuantity || 1,
       minOrderQuantity: productData.minOrderQuantity || productData.moq || 1,
       origin: productData.origin || 'Ethiopia',
-      wholesalerName: productData.wholesalerName || productData.supplierName || 'Merkato Agro',
-      supplierName: productData.supplierName || productData.wholesalerName || 'Merkato Agro',
-      wholesalerLocation: productData.wholesalerLocation || productData.supplierLocation || 'Merkato, Addis Ababa',
-      supplierLocation: productData.supplierLocation || productData.wholesalerLocation || 'Merkato, Addis Ababa'
+      wholesalerName: productData.wholesalerName || productData.supplierName || 'Gondar Agro',
+      supplierName: productData.supplierName || productData.wholesalerName || 'Gondar Agro',
+      wholesalerLocation: productData.wholesalerLocation || productData.supplierLocation || 'Central Market, Gondar',
+      supplierLocation: productData.supplierLocation || productData.wholesalerLocation || 'Central Market, Gondar'
     };
     setProducts(prev => [newProd, ...prev]);
   };

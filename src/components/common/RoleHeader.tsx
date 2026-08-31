@@ -60,7 +60,7 @@ export const RoleHeader: React.FC<RoleHeaderProps> = ({ onOpenCart }) => {
             </span>
           </div>
           <p style={{ fontSize: '0.78rem', color: '#756B5D', margin: '2px 0 0' }}>
-            {currentUser?.businessName || currentUser?.name} • Addis Ababa
+            {currentUser?.businessName || currentUser?.name} • Gondar
           </p>
         </div>
       </div>

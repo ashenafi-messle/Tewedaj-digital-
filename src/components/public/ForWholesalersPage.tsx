@@ -27,7 +27,7 @@ export const ForWholesalersPage: React.FC = () => {
           <p style={{ color: isDark ? '#E2D2C1' : 'var(--text-muted)', fontSize: '1.1rem', maxWidth: '720px', margin: '0 auto', lineHeight: 1.6 }}>
             {isAm 
               ? 'የስርጭት አድማስዎን በመላው አዲስ አበባ እና ክልሎች ያስፉ። ከተረጋገጡ ቸርቻሪዎች አስተማማኝ ትዕዛዞችን በራስ-ሰር ይቀበሉ።'
-              : 'Expand your distribution footprint across Addis Ababa and beyond. Receive guaranteed orders from verified retailers with scheduled pickup couriers.'}
+              : 'Expand your distribution footprint across Gondar and beyond. Receive guaranteed orders from verified retailers with scheduled pickup couriers.'}
           </p>
         </div>
 
