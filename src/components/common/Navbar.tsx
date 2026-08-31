@@ -94,7 +94,7 @@ export const Navbar: React.FC = () => {
         <nav style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '24px'
+          gap: '28px'
         }} className="desktop-nav">
           {navLinks.map((link) => {
             const isActive = pathname === link.path;
@@ -107,12 +107,13 @@ export const Navbar: React.FC = () => {
                   border: 'none',
                   color: isActive ? (isDark ? '#FFB94D' : '#D99A20') : (isDark ? '#F0DFCD' : '#4A2E17'),
                   fontWeight: isActive ? 700 : 500,
-                  fontSize: '0.9rem',
+                  fontSize: '1rem',
                   cursor: 'pointer',
-                  padding: '6px 0',
+                  padding: '8px 0',
                   borderBottom: isActive ? `2px solid ${isDark ? '#FFB94D' : '#D99A20'}` : '2px solid transparent',
                   transition: 'all 0.15s ease',
-                  textDecoration: 'none'
+                  textDecoration: 'none',
+                  whiteSpace: 'nowrap'
                 }}
               >
                 {link.label}
@@ -213,7 +214,7 @@ export const Navbar: React.FC = () => {
       )}
 
       <style>{`
-        @media (max-width: 960px) {
+        @media (max-width: 1024px) {
           .desktop-nav, .desktop-cta {
             display: none !important;
           }
