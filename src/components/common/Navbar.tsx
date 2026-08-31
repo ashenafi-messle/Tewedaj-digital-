@@ -109,17 +109,21 @@ export const Navbar: React.FC = () => {
                 key={link.path}
                 href={link.path}
                 style={{
-                  background: 'none',
-                  border: 'none',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: isActive ? (isDark ? 'rgba(255, 170, 44, 0.12)' : 'rgba(217, 154, 32, 0.12)') : (isDark ? 'rgba(255,255,255,0.02)' : 'rgba(74,46,23,0.03)'),
+                  border: isActive ? `1px solid ${isDark ? '#FFAA2C' : '#D99A20'}` : `1px solid ${isDark ? 'rgba(255,170,44,0.16)' : 'rgba(74,46,23,0.08)'}`,
                   color: isActive ? (isDark ? '#FFB94D' : '#D99A20') : (isDark ? '#F0DFCD' : '#4A2E17'),
                   fontWeight: isActive ? 700 : 500,
-                  fontSize: '1rem',
+                  fontSize: '0.92rem',
                   cursor: 'pointer',
-                  padding: '8px 0',
-                  borderBottom: isActive ? `2px solid ${isDark ? '#FFB94D' : '#D99A20'}` : '2px solid transparent',
-                  transition: 'all 0.15s ease',
+                  padding: '9px 14px',
+                  borderRadius: '10px',
+                  transition: 'all 0.2s ease',
                   textDecoration: 'none',
-                  whiteSpace: 'nowrap'
+                  whiteSpace: 'nowrap',
+                  boxShadow: isActive ? (isDark ? '0 0 0 1px rgba(255,170,44,0.15)' : '0 0 0 1px rgba(217,154,32,0.12)') : 'none'
                 }}
               >
                 {link.label}
