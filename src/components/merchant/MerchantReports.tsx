@@ -209,7 +209,7 @@ export const MerchantReports: React.FC = () => {
           </div>
           <div>
             <h3 style={{ color: '#38210F', fontSize: '1.15rem', margin: 0 }}>
-              {isAm ? 'የቁጠባ ልማድ አስተያየት አውታር' : 'Saving Habit Recommender AI'}
+              {isAm ? 'የቁጠባ ልማድ አስተያየት' : 'Saving habit recommendation'}
             </h3>
             <span style={{ fontSize: '0.76rem', color: '#756B5D' }}>{isAm ? 'ከገቢ፣ ወጪ እና ክምችት መረጃ በመመስረት' : 'Based on your recorded sales, costs and stock flow'}</span>
           </div>
