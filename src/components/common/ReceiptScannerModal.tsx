@@ -23,13 +23,13 @@ export const ReceiptScannerModal: React.FC<ReceiptScannerModalProps> = ({ isOpen
 
   if (!isOpen) return null;
 
-  const simulateOCRScan = (receiptType: 'merkato' | 'flour') => {
+  const simulateOCRScan = (receiptType: 'supplier' | 'flour') => {
     setIsScanning(true);
     setScannedReceipt(null);
     setIsScanning(false);
-    if (receiptType === 'merkato') {
+    if (receiptType === 'supplier') {
         setScannedReceipt({
-          supplier: 'Merkato Agro-Trade Union (Outside Purchase)',
+          supplier: 'Gondar Agro-Trade Union (Outside Purchase)',
           date: '2026-08-19',
           invoiceNo: 'MK-INV-88902',
           items: [
