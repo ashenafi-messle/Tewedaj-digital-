@@ -96,10 +96,11 @@ export const Navbar: React.FC = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          gap: '28px',
-          minWidth: 0,
+          gap: '18px',
+          flexWrap: 'wrap',
+          rowGap: '8px',
           whiteSpace: 'nowrap',
-          overflow: 'hidden'
+          overflow: 'visible'
         }} className="desktop-nav">
           {navLinks.map((link) => {
             const isActive = pathname === link.path;
