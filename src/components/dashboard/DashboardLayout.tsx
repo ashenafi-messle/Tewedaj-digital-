@@ -4,6 +4,7 @@ import { ReactNode, createContext, useContext, useState } from 'react'
 import { useApp } from '../../context/AppContext'
 import { RoleSidebar } from '../navigation/RoleSidebar'
 import { RoleHeader } from '../navigation/RoleHeader'
+import { MobileBottomNav } from '../common/MobileBottomNav'
 
 interface DashboardLayoutProps {
   children: ReactNode
@@ -41,6 +42,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
           <div className="dashboard-content">
             {children}
           </div>
+          <MobileBottomNav />
         </div>
       </div>
     </SidebarContext.Provider>
