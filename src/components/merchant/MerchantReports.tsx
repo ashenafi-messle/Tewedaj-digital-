@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { formatETB } from '../../utils/formatters';
 import {
@@ -35,6 +35,7 @@ import {
 export const MerchantReports: React.FC = () => {
   const { salesTransactions, creditAgreements, inventory, t, language } = useApp();
   const isAm = language === 'am';
+  const [isSavingsOpen, setIsSavingsOpen] = useState(false);
 
   const totalSales = salesTransactions.reduce((sum, s) => sum + (Number(s.totalAmount) || 0), 0) + 78500; // adding baseline historical demo month
   const totalCreditIssued = creditAgreements.reduce((sum, a) => sum + (Number(a.totalAmount) || 0), 0);
@@ -201,65 +202,77 @@ export const MerchantReports: React.FC = () => {
         </div>
       </div>
 
-      {/* AI Savings Habit Recommender */}
-      <div className="card" style={{ background: 'linear-gradient(135deg, rgba(244,197,66,0.12), rgba(79,125,58,0.08))', border: '1px solid rgba(217, 154, 32, 0.2)' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-          <div style={{ width: '42px', height: '42px', borderRadius: '12px', background: '#FFF4D6', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Sparkles size={20} color="#D99A20" />
-          </div>
-          <div>
-            <h3 style={{ color: '#38210F', fontSize: '1.15rem', margin: 0 }}>
-              {isAm ? 'የቁጠባ ልማድ አስተያየት' : 'Saving habit recommendation'}
-            </h3>
-            <span style={{ fontSize: '0.76rem', color: '#756B5D' }}>{isAm ? 'ከገቢ፣ ወጪ እና ክምችት መረጃ በመመስረት' : 'Based on your recorded sales, costs and stock flow'}</span>
-          </div>
-        </div>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px' }}>
-          <div style={{ background: 'rgba(255,255,255,0.7)', borderRadius: '16px', padding: '18px', border: '1px solid rgba(74,46,23,0.08)' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
-              <PiggyBank size={18} color="#4F7D3A" />
-              <strong style={{ color: '#38210F' }}>{isAm ? 'ተገቢ ቁጠባ' : 'Recommended savings'}</strong>
-            </div>
-            <div style={{ fontSize: '1.7rem', fontWeight: 800, color: '#4F7D3A', fontFamily: 'Fraunces, serif' }}>
-              {formatETB(suggestedMonthlySavings)}
-            </div>
-            <div style={{ color: '#756B5D', fontSize: '0.8rem', marginTop: '4px' }}>
-              {isAm ? 'ከወርሃዊ ገቢ ውስጥ የሚሰራ አመራር' : 'Suggested monthly reserve based on your margin'}
-            </div>
-          </div>
-
-          <div style={{ background: 'rgba(255,255,255,0.7)', borderRadius: '16px', padding: '18px', border: '1px solid rgba(74,46,23,0.08)' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
-              <Target size={18} color="#D99A20" />
-              <strong style={{ color: '#38210F' }}>{isAm ? 'የትርፍ መጠን' : 'Gross margin'}</strong>
-            </div>
-            <div style={{ fontSize: '1.7rem', fontWeight: 800, color: '#D99A20', fontFamily: 'Fraunces, serif' }}>
-              {Math.round(grossMarginPercent)}%
-            </div>
-            <div style={{ color: '#756B5D', fontSize: '0.8rem', marginTop: '4px' }}>
-              {isAm ? 'የእቃ ዋጋ እና የገቢ ውጤታማነት' : 'Profitability against cost basis'}
-            </div>
-          </div>
-        </div>
-
-        <div style={{ marginTop: '18px', padding: '18px', borderRadius: '14px', background: 'rgba(255,255,255,0.5)', border: '1px solid rgba(74,46,23,0.06)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
-            <TrendingUp size={18} color="#4F7D3A" />
-            <strong style={{ color: '#38210F' }}>{isAm ? 'አስተያየት' : 'Recommendation'}</strong>
-          </div>
-          <p style={{ margin: 0, color: '#4A2E17', lineHeight: 1.7 }}>{savingRecommendation}</p>
-        </div>
-
-        <div style={{ marginTop: '18px', display: 'grid', gap: '10px' }}>
-          {aiActions.map((action, index) => (
-            <div key={index} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', color: '#4A2E17', background: 'rgba(255,255,255,0.4)', borderRadius: '10px', padding: '10px 12px', border: '1px solid rgba(74,46,23,0.06)' }}>
-              <CheckCircle2 size={16} color="#4F7D3A" style={{ marginTop: '2px', flexShrink: 0 }} />
-              <span>{action}</span>
-            </div>
-          ))}
-        </div>
+      <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '4px' }}>
+        <button
+          onClick={() => setIsSavingsOpen(!isSavingsOpen)}
+          className="btn btn-gold btn-sm"
+          style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+        >
+          <Sparkles size={14} />
+          {isSavingsOpen ? (isAm ? 'የቁጠባ ልማድ አስተያየት ዝጋ' : 'Close saving habit recommendation') : (isAm ? 'የቁጠባ ልማድ አስተያየት ክፈት' : 'Open saving habit recommendation')}
+        </button>
       </div>
+
+      {isSavingsOpen && (
+        <div className="card" style={{ background: 'linear-gradient(135deg, rgba(244,197,66,0.12), rgba(79,125,58,0.08))', border: '1px solid rgba(217, 154, 32, 0.2)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+            <div style={{ width: '42px', height: '42px', borderRadius: '12px', background: '#FFF4D6', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Sparkles size={20} color="#D99A20" />
+            </div>
+            <div>
+              <h3 style={{ color: '#38210F', fontSize: '1.15rem', margin: 0 }}>
+                {isAm ? 'የቁጠባ ልማድ አስተያየት' : 'Saving habit recommendation'}
+              </h3>
+              <span style={{ fontSize: '0.76rem', color: '#756B5D' }}>{isAm ? 'ከገቢ፣ ወጪ እና ክምችት መረጃ በመመስረት' : 'Based on your recorded sales, costs and stock flow'}</span>
+            </div>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px' }}>
+            <div style={{ background: 'rgba(255,255,255,0.7)', borderRadius: '16px', padding: '18px', border: '1px solid rgba(74,46,23,0.08)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
+                <PiggyBank size={18} color="#4F7D3A" />
+                <strong style={{ color: '#38210F' }}>{isAm ? 'ተገቢ ቁጠባ' : 'Recommended savings'}</strong>
+              </div>
+              <div style={{ fontSize: '1.7rem', fontWeight: 800, color: '#4F7D3A', fontFamily: 'Fraunces, serif' }}>
+                {formatETB(suggestedMonthlySavings)}
+              </div>
+              <div style={{ color: '#756B5D', fontSize: '0.8rem', marginTop: '4px' }}>
+                {isAm ? 'ከወርሃዊ ገቢ ውስጥ የሚሰራ አመራር' : 'Suggested monthly reserve based on your margin'}
+              </div>
+            </div>
+
+            <div style={{ background: 'rgba(255,255,255,0.7)', borderRadius: '16px', padding: '18px', border: '1px solid rgba(74,46,23,0.08)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
+                <Target size={18} color="#D99A20" />
+                <strong style={{ color: '#38210F' }}>{isAm ? 'የትርፍ መጠን' : 'Gross margin'}</strong>
+              </div>
+              <div style={{ fontSize: '1.7rem', fontWeight: 800, color: '#D99A20', fontFamily: 'Fraunces, serif' }}>
+                {Math.round(grossMarginPercent)}%
+              </div>
+              <div style={{ color: '#756B5D', fontSize: '0.8rem', marginTop: '4px' }}>
+                {isAm ? 'የእቃ ዋጋ እና የገቢ ውጤታማነት' : 'Profitability against cost basis'}
+              </div>
+            </div>
+          </div>
+
+          <div style={{ marginTop: '18px', padding: '18px', borderRadius: '14px', background: 'rgba(255,255,255,0.5)', border: '1px solid rgba(74,46,23,0.06)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
+              <TrendingUp size={18} color="#4F7D3A" />
+              <strong style={{ color: '#38210F' }}>{isAm ? 'አስተያየት' : 'Recommendation'}</strong>
+            </div>
+            <p style={{ margin: 0, color: '#4A2E17', lineHeight: 1.7 }}>{savingRecommendation}</p>
+          </div>
+
+          <div style={{ marginTop: '18px', display: 'grid', gap: '10px' }}>
+            {aiActions.map((action, index) => (
+              <div key={index} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', color: '#4A2E17', background: 'rgba(255,255,255,0.4)', borderRadius: '10px', padding: '10px 12px', border: '1px solid rgba(74,46,23,0.06)' }}>
+                <CheckCircle2 size={16} color="#4F7D3A" style={{ marginTop: '2px', flexShrink: 0 }} />
+                <span>{action}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* POS Transactions History */}
       <div className="card">

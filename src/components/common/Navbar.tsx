@@ -93,14 +93,14 @@ export const Navbar: React.FC = () => {
 
         {/* Desktop Nav */}
         <nav style={{
-          display: 'flex',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
           alignItems: 'center',
           justifyContent: 'center',
-          gap: '18px',
-          flexWrap: 'wrap',
-          rowGap: '8px',
-          whiteSpace: 'nowrap',
-          overflow: 'visible'
+          gap: '10px',
+          width: '100%',
+          maxWidth: '700px',
+          whiteSpace: 'nowrap'
         }} className="desktop-nav">
           {navLinks.map((link) => {
             const isActive = pathname === link.path;
