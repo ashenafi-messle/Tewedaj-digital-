@@ -39,12 +39,13 @@ export const Navbar: React.FC = () => {
         maxWidth: '1240px',
         margin: '0 auto',
         padding: '14px 24px',
-        display: 'flex',
+        display: 'grid',
+        gridTemplateColumns: 'auto minmax(0, 1fr) auto',
         alignItems: 'center',
-        justifyContent: 'space-between'
+        gap: '18px'
       }}>
         {/* Logo */}
-        <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer', textDecoration: 'none', flexShrink: 0 }}>
+        <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer', textDecoration: 'none', flexShrink: 0, justifySelf: 'start' }}>
           <div style={{
             width: '42px',
             height: '42px',
@@ -94,7 +95,11 @@ export const Navbar: React.FC = () => {
         <nav style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '28px'
+          justifyContent: 'center',
+          gap: '28px',
+          minWidth: 0,
+          whiteSpace: 'nowrap',
+          overflow: 'hidden'
         }} className="desktop-nav">
           {navLinks.map((link) => {
             const isActive = pathname === link.path;
@@ -123,7 +128,7 @@ export const Navbar: React.FC = () => {
         </nav>
 
         {/* Right CTA */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }} className="desktop-cta">
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '16px', flexShrink: 0 }} className="desktop-cta">
           <ThemeToggle compact />
           <LanguageToggle compact />
           <Link
