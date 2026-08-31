@@ -92,11 +92,12 @@ export const Navbar: React.FC = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          gap: '12px',
+          gap: '18px',
           flexWrap: 'wrap',
           width: '100%',
-          maxWidth: '420px',
-          whiteSpace: 'nowrap'
+          maxWidth: '520px',
+          whiteSpace: 'nowrap',
+          padding: '4px 0'
         }} className="desktop-nav">
           {navLinks.map((link) => {
             const isActive = pathname === link.path;
@@ -114,12 +115,13 @@ export const Navbar: React.FC = () => {
                   fontWeight: isActive ? 700 : 500,
                   fontSize: '0.92rem',
                   cursor: 'pointer',
-                  padding: '9px 14px',
-                  borderRadius: '10px',
+                  padding: '10px 18px',
+                  borderRadius: '12px',
                   transition: 'all 0.2s ease',
                   textDecoration: 'none',
                   whiteSpace: 'nowrap',
-                  boxShadow: isActive ? (isDark ? '0 0 0 1px rgba(255,170,44,0.15)' : '0 0 0 1px rgba(217,154,32,0.12)') : 'none'
+                  boxShadow: isActive ? (isDark ? '0 0 0 1px rgba(255,170,44,0.15)' : '0 0 0 1px rgba(217,154,32,0.12)') : '0 2px 6px rgba(74,46,23,0.04)',
+                  minWidth: '120px'
                 }}
               >
                 {link.label}
