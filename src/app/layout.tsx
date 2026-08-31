@@ -9,6 +9,11 @@ const fraunces = Fraunces({ subsets: ['latin'], variable: '--font-fraunces' })
 export const metadata: Metadata = {
   title: 'TEWEDAJ - Ethiopian Micro & Small Business Platform',
   description: 'Connecting merchants, wholesalers, delivery partners, and customers across Ethiopia',
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+  },
 }
 
 export default function RootLayout({

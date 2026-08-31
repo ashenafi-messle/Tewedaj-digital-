@@ -142,7 +142,7 @@ export const LandingPage: React.FC = () => {
       <section style={{
         position: 'relative',
         background: 'linear-gradient(145deg, #F6C515 0%, #F4A900 65%, #E68A00 100%)',
-        padding: '50px 24px 80px',
+        padding: 'clamp(40px, 8vw, 50px) clamp(16px, 4vw, 24px) clamp(60px, 12vw, 80px)',
         overflow: 'hidden',
         borderBottom: '4px solid #3D2817'
       }}>
@@ -192,8 +192,8 @@ export const LandingPage: React.FC = () => {
           maxWidth: '1240px',
           margin: '0 auto',
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '48px',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+          gap: 'clamp(24px, 5vw, 48px)',
           alignItems: 'center',
           position: 'relative',
           zIndex: 2
@@ -259,7 +259,13 @@ export const LandingPage: React.FC = () => {
             </p>
 
             {/* CTA Buttons: Pill-shaped with High Contrast */}
-            <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', marginBottom: '36px' }}>
+            <div style={{ 
+              display: 'flex', 
+              gap: '16px', 
+              flexWrap: 'wrap', 
+              marginBottom: '36px',
+              flexDirection: 'row'
+            }}>
               <button
                 id="hero-primary-cta"
                 onClick={() => setCurrentPath('/auth')}
@@ -267,16 +273,19 @@ export const LandingPage: React.FC = () => {
                   backgroundColor: isDark ? '#0F0C09' : '#3D2817',
                   color: isDark ? '#FFB94D' : '#FFF8E7',
                   border: isDark ? '2px solid #FFAA2C' : '2px solid #3D2817',
-                  padding: '14px 32px',
+                  padding: 'clamp(12px, 3vw, 14px) clamp(24px, 6vw, 32px)',
                   borderRadius: '9999px',
-                  fontSize: '1.05rem',
+                  fontSize: 'clamp(0.95rem, 2.5vw, 1.05rem)',
                   fontWeight: 700,
                   cursor: 'pointer',
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '10px',
                   boxShadow: isDark ? '0 6px 20px rgba(0, 0, 0, 0.3)' : '0 6px 20px rgba(61, 40, 23, 0.35)',
-                  transition: 'all 0.2s ease'
+                  transition: 'all 0.2s ease',
+                  flex: '1 1 auto',
+                  minWidth: 'min(200px, 100%)',
+                  justifyContent: 'center'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-2px)';
@@ -297,25 +306,28 @@ export const LandingPage: React.FC = () => {
                 style={{
                   backgroundColor: isDark ? '#0F0C09' : '#FFF8E7',
                   color: isDark ? '#FFB94D' : '#3D2817',
-                  border: isDark ? '2px solid #FFAA2C' : '2px solid #3D2817',
-                  padding: '14px 28px',
+                  padding: 'clamp(12px, 3vw, 14px) clamp(24px, 6vw, 32px)',
                   borderRadius: '9999px',
-                  fontSize: '1.05rem',
+                  fontSize: 'clamp(0.95rem, 2.5vw, 1.05rem)',
                   fontWeight: 700,
                   cursor: 'pointer',
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '8px',
-                  boxShadow: isDark ? '0 4px 14px rgba(0, 0, 0, 0.3)' : '0 4px 14px rgba(61, 40, 23, 0.15)',
-                  transition: 'all 0.2s ease'
+                  gap: '10px',
+                  border: isDark ? '2px solid #FFAA2C' : '2px solid #3D2817',
+                  boxShadow: isDark ? '0 4px 16px rgba(0, 0, 0, 0.25)' : '0 4px 16px rgba(61, 40, 23, 0.15)',
+                  transition: 'all 0.2s ease',
+                  flex: '1 1 auto',
+                  minWidth: 'min(200px, 100%)',
+                  justifyContent: 'center'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.backgroundColor = '#FFFFFF';
+                  e.currentTarget.style.backgroundColor = isDark ? '#1A1109' : '#FFFFFF';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.backgroundColor = '#FFF8E7';
+                  e.currentTarget.style.backgroundColor = isDark ? '#0F0C09' : '#FFF8E7';
                 }}
               >
                 {language === 'am' ? 'ተወዳጅ እንዴት ይሰራል?' : 'How TEWEDAJ Works'}
@@ -447,7 +459,7 @@ export const LandingPage: React.FC = () => {
               {/* Floating Live Activity Counters */}
               <div style={{
                 display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
                 gap: '10px',
                 marginTop: '12px'
               }}>
@@ -548,8 +560,8 @@ export const LandingPage: React.FC = () => {
           {/* 4 Main Service Cards */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-            gap: '26px'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))',
+            gap: 'clamp(16px, 4vw, 26px)'
           }}>
             {/* Card 1: Trusted Credit */}
             <div
@@ -789,8 +801,8 @@ export const LandingPage: React.FC = () => {
           {/* 6 Merchant Photography Cards (16:9) */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
-            gap: '28px'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+            gap: 'clamp(16px, 4vw, 28px)'
           }}>
             {merchantCards.map((card) => {
               const IconComp = card.icon;
@@ -938,8 +950,8 @@ export const LandingPage: React.FC = () => {
         <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '44px',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+            gap: 'clamp(24px, 5vw, 44px)',
             alignItems: 'center'
           }}>
             {/* Left Content */}
@@ -1025,8 +1037,8 @@ export const LandingPage: React.FC = () => {
               {/* Supplier Key Highlights */}
               <div style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-                gap: '16px',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 140px), 1fr))',
+                gap: 'clamp(12px, 3vw, 16px)',
                 marginTop: '32px'
               }}>
                 <div style={{ backgroundColor: isDark ? '#0F0C09' : '#FFF8E7', padding: '14px 18px', borderRadius: '16px', border: isDark ? '1.5px solid #FFAA2C' : '1.5px solid #3D2817' }}>
@@ -1136,8 +1148,8 @@ export const LandingPage: React.FC = () => {
             {/* Center Hub + Nodes Flow */}
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-              gap: '16px',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 160px), 1fr))',
+              gap: 'clamp(12px, 3vw, 16px)',
               position: 'relative'
             }}>
               {[
@@ -1339,8 +1351,8 @@ export const LandingPage: React.FC = () => {
         <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '48px',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+            gap: 'clamp(24px, 5vw, 48px)',
             alignItems: 'center'
           }}>
             {/* Left Credit Text & Regulatory Safety */}
@@ -1454,7 +1466,7 @@ export const LandingPage: React.FC = () => {
               {/* Top Credit Summary Grid */}
               <div style={{
                 display: 'grid',
-                gridTemplateColumns: '1fr 1fr 1fr',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 120px), 1fr))',
                 gap: '10px',
                 backgroundColor: isDark ? '#0F0C09' : '#FAF3E3',
                 padding: '16px',
@@ -1596,8 +1608,8 @@ export const LandingPage: React.FC = () => {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '20px'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))',
+            gap: 'clamp(16px, 4vw, 20px)'
           }}>
             {[
               {
@@ -1765,8 +1777,8 @@ export const LandingPage: React.FC = () => {
         <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-            gap: '40px',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))',
+            gap: 'clamp(24px, 5vw, 40px)',
             marginBottom: '48px'
           }}>
             {/* Column 1: Brand & Tagline */}

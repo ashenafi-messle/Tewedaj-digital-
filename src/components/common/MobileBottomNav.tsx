@@ -4,9 +4,13 @@ import React from 'react';
 import { useApp } from '../../context/AppContext';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { LayoutDashboard, CreditCard, ShoppingBag, Package, Boxes, Truck, DollarSign, Receipt, User } from 'lucide-react';
+import { LayoutDashboard, CreditCard, ShoppingBag, Package, Boxes, Truck, DollarSign, Receipt, User, MoreHorizontal } from 'lucide-react';
 
-export const MobileBottomNav: React.FC = () => {
+interface MobileBottomNavProps {
+  onMenuClick?: () => void;
+}
+
+export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({ onMenuClick }) => {
   const { currentRole, creditAgreements, orders, deliveryJobs, language } = useApp();
   const pathname = usePathname();
 
@@ -16,7 +20,7 @@ export const MobileBottomNav: React.FC = () => {
   const activeOrders = orders.filter(o => o.status !== 'Delivered' && o.status !== 'Cancelled').length;
   const availableJobs = deliveryJobs.filter(j => j.status === 'Available').length;
 
-  let items: Array<{ label: string; path: string; icon: React.ReactNode; badge?: number }> = [];
+  let items: Array<{ label: string; path: string; icon: React.ReactNode; badge?: number; isMore?: boolean }> = [];
 
   if (currentRole === 'merchant') {
     items = [
@@ -24,7 +28,7 @@ export const MobileBottomNav: React.FC = () => {
       { label: language === 'am' ? 'ብድር' : 'Credit', path: '/merchant/credit-hub', icon: <CreditCard size={20} />, badge: activeCredits },
       { label: language === 'am' ? 'ጅምላ' : 'Market', path: '/merchant/marketplace', icon: <ShoppingBag size={20} /> },
       { label: language === 'am' ? 'ጭነት' : 'Orders', path: '/merchant/orders', icon: <Package size={20} />, badge: activeOrders },
-      { label: language === 'am' ? 'ክምችት' : 'Stock', path: '/merchant/inventory', icon: <Boxes size={20} /> },
+      { label: language === 'am' ? 'ተጨማህ' : 'More', path: '#', icon: <MoreHorizontal size={20} />, isMore: true },
     ];
   } else if (currentRole === 'wholesaler') {
     items = [
@@ -52,36 +56,118 @@ export const MobileBottomNav: React.FC = () => {
     <nav className="mobile-bottom-nav">
       {items.map((item) => {
         const isActive = pathname === item.path;
+        
+        if (item.isMore) {
+          return (
+            <button
+              key="more"
+              onClick={onMenuClick}
+              className="mobile-nav-item"
+              style={{ 
+                position: 'relative', 
+                background: 'none', 
+                border: 'none', 
+                cursor: 'pointer', 
+                textDecoration: 'none', 
+                display: 'flex', 
+                flexDirection: 'column',
+                alignItems: 'center', 
+                justifyContent: 'center', 
+                gap: '4px',
+                padding: '8px 12px',
+                minWidth: '60px',
+                minHeight: '60px'
+              }}
+              aria-label={item.label}
+            >
+              <div style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center',
+                position: 'relative'
+              }}>
+                {item.icon}
+              </div>
+              <span style={{
+                fontSize: '0.7rem',
+                fontWeight: 500,
+                color: 'var(--text-muted)',
+                textAlign: 'center',
+                lineHeight: 1.1,
+                maxWidth: '70px',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap'
+              }}>
+                {item.label}
+              </span>
+            </button>
+          );
+        }
+
         return (
           <Link
             key={item.path}
             href={item.path}
             className={`mobile-nav-item ${isActive ? 'active' : ''}`}
-            style={{ position: 'relative', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0', padding: '0.5rem 0.25rem' }}
+            style={{ 
+              position: 'relative', 
+              background: 'none', 
+              border: 'none', 
+              cursor: 'pointer', 
+              textDecoration: 'none', 
+              display: 'flex', 
+              flexDirection: 'column',
+              alignItems: 'center', 
+              justifyContent: 'center', 
+              gap: '4px',
+              padding: '8px 12px',
+              minWidth: '60px',
+              minHeight: '60px'
+            }}
             aria-label={item.label}
           >
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'center',
+              position: 'relative'
+            }}>
               {item.icon}
+              {item.badge !== undefined && item.badge > 0 && (
+                <span style={{
+                  position: 'absolute',
+                  top: '-4px',
+                  right: '-6px',
+                  backgroundColor: '#D99A20',
+                  color: '#FFFFFF',
+                  fontSize: '0.65rem',
+                  fontWeight: 800,
+                  borderRadius: '50%',
+                  width: '16px',
+                  height: '16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  minWidth: '16px'
+                }}>
+                  {item.badge > 9 ? '9+' : item.badge}
+                </span>
+              )}
             </div>
-            {item.badge !== undefined && item.badge > 0 && (
-              <span style={{
-                position: 'absolute',
-                top: '-4px',
-                right: '-8px',
-                backgroundColor: '#D99A20',
-                color: '#FFFFFF',
-                fontSize: '0.62rem',
-                fontWeight: 800,
-                borderRadius: '50%',
-                width: '15px',
-                height: '15px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}>
-                {item.badge}
-              </span>
-            )}
+            <span style={{
+              fontSize: '0.7rem',
+              fontWeight: isActive ? 700 : 500,
+              color: isActive ? 'var(--gold-deep)' : 'var(--text-muted)',
+              textAlign: 'center',
+              lineHeight: 1.1,
+              maxWidth: '70px',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap'
+            }}>
+              {item.label}
+            </span>
           </Link>
         );
       })}

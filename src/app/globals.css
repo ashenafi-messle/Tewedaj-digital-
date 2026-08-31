@@ -10,18 +10,37 @@
   html {
     overflow-x: hidden;
     scroll-behavior: smooth;
+    max-width: 100%;
   }
 
   body {
     overflow-x: hidden;
-    max-width: 100vw;
+    max-width: 100%;
     width: 100%;
+    min-width: 320px;
   }
 
   img, svg, canvas, video {
     display: block;
     max-width: 100%;
     height: auto;
+  }
+
+  /* Prevent text overflow issues */
+  * {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  /* Form input font size to prevent mobile zoom */
+  input, select, textarea {
+    font-size: 16px;
+  }
+
+  @media (max-width: 600px) {
+    input, select, textarea {
+      font-size: 16px;
+    }
   }
 
   :root {
@@ -189,6 +208,368 @@
 
   .dashboard-content {
     padding: 12px 0 24px;
+  }
+}
+
+/* Mobile Drawer Styles */
+.mobile-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(31, 20, 12, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: none;
+}
+
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 85%;
+  max-width: 300px;
+  background: #ffffff;
+  z-index: 1001;
+  display: none;
+  flex-direction: column;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.2);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.mobile-drawer.open {
+  transform: translateX(0);
+}
+
+.mobile-drawer-open .mobile-drawer-overlay {
+  display: block;
+}
+
+.mobile-drawer-open .mobile-drawer {
+  display: flex;
+}
+
+.mobile-drawer-open body {
+  overflow: hidden;
+}
+
+.dark .mobile-drawer {
+  background: #1A130D;
+}
+
+.dark .mobile-drawer-overlay {
+  background: rgba(10, 7, 5, 0.75);
+}
+
+/* Mobile Header Styles */
+.mobile-portal-header {
+  display: none;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  min-height: 56px;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(74, 46, 23, 0.1);
+  padding: 8px 12px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.dark .mobile-portal-header {
+  background: #1A130D;
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 900px) {
+  .mobile-portal-header {
+    display: flex;
+  }
+
+  .dashboard-header {
+    display: none;
+  }
+}
+
+/* Mobile Safe Area Support */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .mobile-bottom-nav {
+    padding-bottom: calc(8px + env(safe-area-inset-bottom));
+  }
+
+  .mobile-portal-header {
+    padding-top: calc(8px + env(safe-area-inset-top));
+  }
+}
+
+/* Mobile Card Optimizations */
+@media (max-width: 640px) {
+  .card, .stat-card {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .stat-value {
+    font-size: 1.35rem;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+  }
+}
+
+/* Mobile Modal Optimizations */
+@media (max-width: 640px) {
+  .modal-content {
+    width: calc(100% - 24px);
+    max-height: 90dvh;
+    border-radius: 12px;
+    padding: 20px;
+  }
+
+  .modal-overlay {
+    padding: 12px;
+  }
+
+  .modal-header {
+    padding: 0 0 16px 0;
+    margin-bottom: 16px;
+  }
+
+  .modal-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .modal-body {
+    padding: 0;
+    margin-bottom: 20px;
+  }
+
+  .modal-footer {
+    padding: 16px 0 0 0;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .modal-footer .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Ensure modals don't cause horizontal scroll */
+  .modal-content * {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+}
+
+/* Touch-friendly targets */
+@media (max-width: 640px) {
+  .btn, .btn-sm, button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .sidebar-link {
+    min-height: 44px;
+  }
+}
+
+/* Mobile Table Cards */
+.mobile-table-cards {
+  display: none;
+}
+
+.mobile-table-card {
+  background: var(--white);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.mobile-table-card:last-child {
+  margin-bottom: 0;
+}
+
+.dark .mobile-table-card {
+  background: var(--surface-card);
+  border-color: var(--border-subtle);
+}
+
+@media (max-width: 640px) {
+  .mobile-table-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .table-desktop {
+    display: none;
+  }
+}
+
+@media (min-width: 641px) {
+  .mobile-table-cards {
+    display: none;
+  }
+
+  .table-desktop {
+    display: table;
+  }
+}
+
+/* Responsive Form Grids */
+@media (max-width: 640px) {
+  .form-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .form-group {
+    margin-bottom: 12px;
+  }
+
+  .form-input, .form-select, .form-textarea {
+    padding: 12px 14px;
+    min-height: 48px;
+  }
+
+  .form-label {
+    font-size: 0.8rem;
+    margin-bottom: 6px;
+  }
+
+  /* Form buttons should be full width on mobile */
+  .form-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .form-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Responsive Dashboard Grids */
+@media (max-width: 640px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .stat-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr)) !important;
+    gap: 12px !important;
+  }
+
+  /* KPI Cards */
+  .stat-card {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .stat-value {
+    font-size: 1.35rem;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+  }
+
+  .stat-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* Dashboard headings */
+  .dashboard-content h1 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .dashboard-content h2 {
+    font-size: 1.25rem;
+    line-height: 1.3;
+  }
+
+  .dashboard-content h3 {
+    font-size: 1.1rem;
+    line-height: 1.3;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 900px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .stat-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Charts responsiveness */
+@media (max-width: 640px) {
+  .chart-container {
+    height: 250px;
+    min-height: 250px;
+  }
+
+  .chart-container canvas,
+  .chart-container svg {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Horizontal scroll prevention - specific components */
+.table-container,
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+}
+
+/* Prevent images from causing horizontal scroll */
+img, svg, canvas, video, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Code blocks and preformatted text */
+pre, code {
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Long text content */
+.long-text {
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+/* Flex containers that might overflow */
+.flex-container {
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+/* Grid containers */
+.grid-container {
+  min-width: 0;
+}
+
+/* Safe area padding for mobile */
+@supports (padding: env(safe-area-inset-right)) {
+  body {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
   }
 }
 
