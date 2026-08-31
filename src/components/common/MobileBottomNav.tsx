@@ -57,30 +57,30 @@ export const MobileBottomNav: React.FC = () => {
             key={item.path}
             href={item.path}
             className={`mobile-nav-item ${isActive ? 'active' : ''}`}
-            style={{ position: 'relative', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'none' }}
+            style={{ position: 'relative', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0' }}
           >
-            <div style={{ position: 'relative' }}>
+            <div style={{ display: 'none' }}>
               {item.icon}
-              {item.badge !== undefined && item.badge > 0 && (
-                <span style={{
-                  position: 'absolute',
-                  top: '-4px',
-                  right: '-8px',
-                  backgroundColor: '#D99A20',
-                  color: '#FFFFFF',
-                  fontSize: '0.62rem',
-                  fontWeight: 800,
-                  borderRadius: '50%',
-                  width: '15px',
-                  height: '15px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}>
-                  {item.badge}
-                </span>
-              )}
             </div>
+            {item.badge !== undefined && item.badge > 0 && (
+              <span style={{
+                position: 'absolute',
+                top: '-4px',
+                right: '-8px',
+                backgroundColor: '#D99A20',
+                color: '#FFFFFF',
+                fontSize: '0.62rem',
+                fontWeight: 800,
+                borderRadius: '50%',
+                width: '15px',
+                height: '15px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                {item.badge}
+              </span>
+            )}
             <span>{item.label}</span>
           </Link>
         );

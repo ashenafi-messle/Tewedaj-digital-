@@ -6,6 +6,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Menu, X, ArrowRight, ShieldCheck, ChevronRight } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
+import { LanguageToggle } from './LanguageToggle';
 
 export const Navbar: React.FC = () => {
   const { loginUser, theme } = useApp();
@@ -123,6 +124,7 @@ export const Navbar: React.FC = () => {
         {/* Right CTA */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }} className="desktop-cta">
           <ThemeToggle compact />
+          <LanguageToggle compact />
           <Link
             href="/login"
             className="btn btn-outline btn-sm"
@@ -140,7 +142,12 @@ export const Navbar: React.FC = () => {
           </Link>
         </div>
 
-        <ThemeToggle compact className="mobile-theme-toggle" />
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <ThemeToggle compact className="mobile-theme-toggle" />
+          <div className="mobile-language-toggle" style={{ display: 'none' }}>
+            <LanguageToggle compact />
+          </div>
+        </div>
 
         {/* Mobile Menu Toggle */}
         <button
@@ -214,6 +221,9 @@ export const Navbar: React.FC = () => {
             display: inline-flex !important;
           }
           .mobile-theme-toggle {
+            display: inline-flex !important;
+          }
+          .mobile-language-toggle {
             display: inline-flex !important;
           }
         }

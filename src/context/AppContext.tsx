@@ -22,6 +22,7 @@ import {
   INITIAL_USERS,
   INITIAL_PRODUCTS,
   INITIAL_CREDIT_AGREEMENTS,
+  INITIAL_CREDIT_REQUESTS,
   INITIAL_ORDERS,
   INITIAL_DELIVERY_JOBS,
   INITIAL_INVENTORY,
@@ -193,7 +194,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
 
   // Persistence State
   const [creditAgreements, setCreditAgreements] = useState<CreditAgreement[]>(INITIAL_CREDIT_AGREEMENTS);
-  const [creditRequests, setCreditRequests] = useState<CreditRequest[]>([]);
+  const [creditRequests, setCreditRequests] = useState<CreditRequest[]>(INITIAL_CREDIT_REQUESTS);
   const [products, setProducts] = useState<Product[]>(INITIAL_PRODUCTS);
   const [orders, setOrders] = useState<Order[]>(INITIAL_ORDERS);
   const [deliveryJobs, setDeliveryJobs] = useState<DeliveryJob[]>(INITIAL_DELIVERY_JOBS);

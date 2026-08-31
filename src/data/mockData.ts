@@ -1,4 +1,4 @@
-import { User, CreditAgreement, Product, Order, DeliveryJob, InventoryItem, SaleTransaction, AppNotification } from '../types';
+import { User, CreditAgreement, Product, Order, DeliveryJob, InventoryItem, SaleTransaction, AppNotification, CreditRequest } from '../types';
 
 export const INITIAL_USERS: User[] = [
   {
@@ -362,6 +362,53 @@ export const INITIAL_CREDIT_AGREEMENTS: CreditAgreement[] = [
         recordedBy: 'Telebirr Mandate Engine',
       }
     ]
+  }
+];
+
+export const INITIAL_CREDIT_REQUESTS: CreditRequest[] = [
+  {
+    id: 'crq-101',
+    requestNumber: 'TW-CRQ-2026-1101',
+    merchantId: 'usr-merch-1',
+    merchantName: 'Almaz Family Grocery & Kiosk',
+    merchantPhone: '+251 911 234 567',
+    merchantLocation: 'Gondar, Bole Sub-City, Woreda 03',
+    merchantTelebirrPhone: '+251 911 234 567',
+    wholesalerId: 'usr-whole-1',
+    wholesalerName: 'Gondar Central Grain & Agro Wholesalers',
+    wholesalerPhone: '+251 912 889 900',
+    wholesalerLocation: 'Gondar, Commercial District',
+    items: [
+      { productId: 'prod-1', productName: 'Adaa Magna White Teff (Grade 1)', quantity: 2, unit: '100kg Quintal Sack', unitPrice: 8200, totalPrice: 16400, total: 16400 },
+      { productId: 'prod-2', productName: 'Selam Pure Refined Sunflower Cooking Oil (5L)', quantity: 4, unit: 'Jerrycan', unitPrice: 1050, totalPrice: 4200, total: 4200 }
+    ],
+    totalAmount: 20600,
+    requestedDate: '2026-08-25',
+    status: 'Pending',
+    terms: '30-day credit cycle with Telebirr mandate repayment.',
+    dueDate: '2026-09-24'
+  },
+  {
+    id: 'crq-102',
+    requestNumber: 'TW-CRQ-2026-1102',
+    merchantId: 'usr-merch-1',
+    merchantName: 'Almaz Family Grocery & Kiosk',
+    merchantPhone: '+251 911 234 567',
+    merchantLocation: 'Gondar, Bole Sub-City, Woreda 03',
+    merchantTelebirrPhone: '+251 911 234 567',
+    wholesalerId: 'usr-whole-1',
+    wholesalerName: 'Gondar Central Grain & Agro Wholesalers',
+    wholesalerPhone: '+251 912 889 900',
+    wholesalerLocation: 'Gondar, Commercial District',
+    items: [
+      { productId: 'prod-3', productName: 'Ethiopian Premium Grade Berbere Spice Mix', quantity: 3, unit: '5kg Pack', unitPrice: 650, totalPrice: 1950, total: 1950 },
+      { productId: 'prod-4', productName: 'Yirgacheffe Highland Roasted Coffee Beans', quantity: 5, unit: '1kg Bag', unitPrice: 950, totalPrice: 4750, total: 4750 }
+    ],
+    totalAmount: 6700,
+    requestedDate: '2026-08-27',
+    status: 'Pending',
+    terms: 'Installment structure aligned to weekly sales turnover.',
+    dueDate: '2026-09-27'
   }
 ];
 
