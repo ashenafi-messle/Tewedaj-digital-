@@ -57,9 +57,10 @@ export const MobileBottomNav: React.FC = () => {
             key={item.path}
             href={item.path}
             className={`mobile-nav-item ${isActive ? 'active' : ''}`}
-            style={{ position: 'relative', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0' }}
+            style={{ position: 'relative', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0', padding: '0.5rem 0.25rem' }}
+            aria-label={item.label}
           >
-            <div style={{ display: 'none' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               {item.icon}
             </div>
             {item.badge !== undefined && item.badge > 0 && (
@@ -81,7 +82,6 @@ export const MobileBottomNav: React.FC = () => {
                 {item.badge}
               </span>
             )}
-            <span>{item.label}</span>
           </Link>
         );
       })}
