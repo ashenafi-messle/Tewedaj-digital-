@@ -12,7 +12,11 @@ import {
   CreditCard,
   Boxes,
   Printer,
-  CheckCircle2
+  CheckCircle2,
+  Sparkles,
+  PiggyBank,
+  Target,
+  TrendingDown
 } from 'lucide-react';
 import {
   BarChart,
@@ -36,6 +40,38 @@ export const MerchantReports: React.FC = () => {
   const totalCreditIssued = creditAgreements.reduce((sum, a) => sum + (Number(a.totalAmount) || 0), 0);
   const totalCreditCollected = creditAgreements.reduce((sum, a) => sum + (Number(a.paidAmount) || 0), 0);
   const recoveryRate = totalCreditIssued > 0 ? Math.round((totalCreditCollected / totalCreditIssued) * 100) : 100;
+
+  const inventoryCostBase = inventory.reduce((sum, item) => sum + ((Number(item.quantity) || 0) * (Number(item.buyingPrice) || 0)), 0);
+  const grossProfit = totalSales - inventoryCostBase * 0.8;
+  const grossMarginPercent = totalSales > 0 ? (grossProfit / totalSales) * 100 : 0;
+  const recommendedSavingsRate = grossMarginPercent >= 25 ? 0.28 : grossMarginPercent >= 18 ? 0.22 : grossMarginPercent >= 12 ? 0.15 : 0.1;
+  const suggestedMonthlySavings = Math.round(totalSales * recommendedSavingsRate);
+  const suggestedReserve = Math.round(grossProfit * 0.35);
+  const lowTurnoverItems = inventory.filter(item => (Number(item.quantity) || 0) > 12 && (Number(item.sellingPrice) || 0) <= (Number(item.buyingPrice) || 0) * 1.1).length;
+
+  const savingRecommendation = grossMarginPercent >= 25
+    ? isAm
+      ? 'የንግድዎ ትርፍ ጤናማ ነው፤ ከወርሃዊ ሽያጭ 28% እንዲወስዱ እና የስብስብ አቅርቦት ቋት ከጠቅላላ እቃ ዋጋ 15% በላይ እንዳይበልጥ ያስተዳድሩ።'
+      : 'Your profit margin is healthy. A strong habit is to reserve about 28% of monthly sales into a business savings pool while keeping a 15% working-capital buffer for restocking.'
+    : grossMarginPercent >= 18
+      ? isAm
+        ? 'የእቃ ዋጋ እና የገቢ መጠን ሚዛናዊ ነው፤ ከወርሃዊ ገቢ 22% እንዲቀመጥ እና ለአንድ ሪስቶክ በረጅም ጊዜ ከ 65% በላይ እንዳይበልጥ ያስተዳድሩ።'
+        : 'Your sales-to-cost balance is stable. Keep around 22% of monthly earnings in savings and limit any single restock cycle to no more than 65% of your current inventory value.'
+      : isAm
+        ? 'ወጪዎች ከገቢ በላይ የሚነሱ በመሆናቸው እቃዎችን በትንሽ እየለዋወጡ ያውጡ እና በመንግዶ ታዲያ 10–15% እንዲቀመጥ የማጠቃለያ ምክር አድርገውበታል።'
+        : 'Your costs are heavier than ideal. Focus on faster-turnover stock, reduce over-ordering, and hold 10–15% of monthly sales as a savings buffer while costs stabilize.';
+
+  const aiActions = isAm
+    ? [
+        `የወር ቁጠባ: ETB ${suggestedMonthlySavings.toLocaleString()} ያስቀምጡ`,
+        `የሪስቶክ አሰራር: በአንድ ጊዜ ከ ${Math.round((inventoryCostBase * 0.65)).toLocaleString()} ETB በላይ አያስገቡ`,
+        lowTurnoverItems > 0 ? `ድንቁ እቃዎች: ${lowTurnoverItems} አዝማሚያ በእጅ ላይ ያሉ የቀለል ሽያጭ እቃዎች ይቀንሱ` : 'የእቃ ፍሰት ጤናማ ነው፤ እቃዎችን በወቅቱ እንደገና ያስመዝግቡ'
+      ]
+    : [
+        `Monthly savings target: ETB ${suggestedMonthlySavings.toLocaleString()}`,
+        `Restock cap: do not exceed ETB ${Math.round(inventoryCostBase * 0.65).toLocaleString()} in one purchase cycle`,
+        lowTurnoverItems > 0 ? `Low-turnover review: ${lowTurnoverItems} slower-moving items should be reduced or repackaged` : 'Inventory flow is healthy; continue refreshing best sellers before bulk restocking'
+      ];
 
   // Category sales distribution
   const categorySalesData = [
@@ -162,6 +198,66 @@ export const MerchantReports: React.FC = () => {
               </PieChart>
             </ResponsiveContainer>
           </div>
+        </div>
+      </div>
+
+      {/* AI Savings Habit Recommender */}
+      <div className="card" style={{ background: 'linear-gradient(135deg, rgba(244,197,66,0.12), rgba(79,125,58,0.08))', border: '1px solid rgba(217, 154, 32, 0.2)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+          <div style={{ width: '42px', height: '42px', borderRadius: '12px', background: '#FFF4D6', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Sparkles size={20} color="#D99A20" />
+          </div>
+          <div>
+            <h3 style={{ color: '#38210F', fontSize: '1.15rem', margin: 0 }}>
+              {isAm ? 'የቁጠባ ልማድ አስተያየት አውታር' : 'Saving Habit Recommender AI'}
+            </h3>
+            <span style={{ fontSize: '0.76rem', color: '#756B5D' }}>{isAm ? 'ከገቢ፣ ወጪ እና ክምችት መረጃ በመመስረት' : 'Based on your recorded sales, costs and stock flow'}</span>
+          </div>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px' }}>
+          <div style={{ background: 'rgba(255,255,255,0.7)', borderRadius: '16px', padding: '18px', border: '1px solid rgba(74,46,23,0.08)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
+              <PiggyBank size={18} color="#4F7D3A" />
+              <strong style={{ color: '#38210F' }}>{isAm ? 'ተገቢ ቁጠባ' : 'Recommended savings'}</strong>
+            </div>
+            <div style={{ fontSize: '1.7rem', fontWeight: 800, color: '#4F7D3A', fontFamily: 'Fraunces, serif' }}>
+              {formatETB(suggestedMonthlySavings)}
+            </div>
+            <div style={{ color: '#756B5D', fontSize: '0.8rem', marginTop: '4px' }}>
+              {isAm ? 'ከወርሃዊ ገቢ ውስጥ የሚሰራ አመራር' : 'Suggested monthly reserve based on your margin'}
+            </div>
+          </div>
+
+          <div style={{ background: 'rgba(255,255,255,0.7)', borderRadius: '16px', padding: '18px', border: '1px solid rgba(74,46,23,0.08)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
+              <Target size={18} color="#D99A20" />
+              <strong style={{ color: '#38210F' }}>{isAm ? 'የትርፍ መጠን' : 'Gross margin'}</strong>
+            </div>
+            <div style={{ fontSize: '1.7rem', fontWeight: 800, color: '#D99A20', fontFamily: 'Fraunces, serif' }}>
+              {Math.round(grossMarginPercent)}%
+            </div>
+            <div style={{ color: '#756B5D', fontSize: '0.8rem', marginTop: '4px' }}>
+              {isAm ? 'የእቃ ዋጋ እና የገቢ ውጤታማነት' : 'Profitability against cost basis'}
+            </div>
+          </div>
+        </div>
+
+        <div style={{ marginTop: '18px', padding: '18px', borderRadius: '14px', background: 'rgba(255,255,255,0.5)', border: '1px solid rgba(74,46,23,0.06)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
+            <TrendingUp size={18} color="#4F7D3A" />
+            <strong style={{ color: '#38210F' }}>{isAm ? 'አስተያየት' : 'Recommendation'}</strong>
+          </div>
+          <p style={{ margin: 0, color: '#4A2E17', lineHeight: 1.7 }}>{savingRecommendation}</p>
+        </div>
+
+        <div style={{ marginTop: '18px', display: 'grid', gap: '10px' }}>
+          {aiActions.map((action, index) => (
+            <div key={index} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', color: '#4A2E17', background: 'rgba(255,255,255,0.4)', borderRadius: '10px', padding: '10px 12px', border: '1px solid rgba(74,46,23,0.06)' }}>
+              <CheckCircle2 size={16} color="#4F7D3A" style={{ marginTop: '2px', flexShrink: 0 }} />
+              <span>{action}</span>
+            </div>
+          ))}
         </div>
       </div>
 
